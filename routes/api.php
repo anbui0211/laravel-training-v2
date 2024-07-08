@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\PostController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -30,3 +31,13 @@ Route::prefix('auth')->group(function () {
         Route::get('me', [AuthController::class, 'me']);
     });
 });
+
+Route::prefix('posts')->group(function () {
+    Route::get('', [PostController::class, 'index']);
+    Route::post('', [PostController::class, 'store']);
+    Route::get('/{post}', [PostController::class, 'show']);
+    Route::put('/{post}', [PostController::class, 'update']);
+    Route::delete('/{post}', [PostController::class, 'destroy']);
+});
+
+// Route::get('post/{post}', [PostController::class, 'show']);

@@ -40,10 +40,11 @@ class PostController extends Controller
     public function store(CreatePostRequest $request)
     {
         $validatedData = $request->validated();
-        $this->postService->store($validatedData);
+        $imagePath = $this->postService->store($validatedData);
 
         return response()->json([
             "message" => "create success",
+            'data' => $imagePath
         ]);
     }
 

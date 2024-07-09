@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Repositories\Interfaces\PostRepositoryInterface;
 use App\Models\Post;
 
 class PostRepository implements PostRepositoryInterface
@@ -43,7 +44,8 @@ class PostRepository implements PostRepositoryInterface
     public function insert(array $data)
     {
         $this->model->fill($data);
-        return $this->model->save();
+        $this->model->save();
+        return $this->model;
     }
 
     public function update(array $data, $id)

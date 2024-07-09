@@ -26,7 +26,7 @@ class CreatePostRequest extends FormRequest
             'title' => ['required', 'string'],
             'content' => ['required', 'string'],
             'user_id' => ['required', 'numeric', new ExistUser],
-            'image' => ['nullable', 'mimes:png,jpg,jpeg,webp'],
+            'images.*' => ['nullable', 'mimes:png,jpg,jpeg,webp', 'max:2048'],
         ];
     }
 }

@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Repositories\ImageRepository;
+use App\Repositories\Interfaces\ImageRepositoryInterface;
+use App\Repositories\Interfaces\PostRepositoryInterface;
 use App\Repositories\PostRepository;
-use App\Repositories\PostRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -15,6 +17,7 @@ class AppServiceProvider extends ServiceProvider
     {
         // NOTE: Every time Laravel needs an instance of PostRepositoryInterface, it creates and provides an instance of PostRepository.
         $this->app->bind(PostRepositoryInterface::class, PostRepository::class);
+        $this->app->bind(ImageRepositoryInterface::class, ImageRepository::class);
     }
 
     /**
